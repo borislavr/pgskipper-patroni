@@ -42,7 +42,7 @@ on:
 
 jobs:
   security-scan:
-    uses: Netcracker/qubership-workflow-hub/.github/workflows/re-security-scan.yml@main
+    uses: borislavr/qubership-workflow-hub/.github/workflows/re-security-scan.yml@main
     with:
       target: ${{ inputs.target }}
       image: ${{ inputs.image }}
