@@ -1,4 +1,4 @@
-name: Vulnerability Scan Mod
+name: Vulnerability Scan
 run-name: Vulnerability Scan for ${{ inputs.target }} ${{ inputs.image && format('({0})', inputs.image) || '' }}
 # This workflow performs security vulnerability scanning on Docker images or source code
 # using Trivy and Grype tools. It can be triggered manually via workflow_dispatch.
@@ -19,11 +19,6 @@ on:
         required: false
         default: ""
         type: string
-      only-high-critical:
-        description: "Scope only HIGH + CRITICAL"
-        required: false
-        default: true
-        type: boolean
       trivy-scan:
         description: "Trivy scan"
         required: false
@@ -46,7 +41,6 @@ jobs:
     with:
       target: ${{ inputs.target }}
       image: ${{ inputs.image }}
-      only-high-critical: ${{ inputs.only-high-critical }}
       trivy-scan: ${{ inputs.trivy-scan }}
       grype-scan: ${{ inputs.grype-scan }}
       continue-on-error: ${{ inputs.continue-on-error }}
