@@ -1,7 +1,5 @@
 name: Docker Security Scan
 on:
-  schedule:
-    - cron: "0 0 * * 0" # Runs weekly on Sunday at midnight
   workflow_dispatch:
     inputs:
       target:
@@ -39,7 +37,7 @@ on:
 
 jobs:
   security-scan:
-    uses: netcracker/qubership-workflow-hub/.github/workflows/re-security-scan.yml@feature/security-scan-to-csv
+    uses: netcracker/qubership-workflow-hub/.github/workflows/re-security-scan.yml@fix/re-security-scan-to-csv-scope-for-high-crit
     with:
       target: ${{ github.event.inputs.target || 'source' }}
       image: ${{ github.event.inputs.image || '' }}
